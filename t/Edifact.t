@@ -20,9 +20,9 @@ use Modern::Perl;
 use Test::More tests => 3;
 use Test::NoWarnings;
 
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact;
 
-my $class = 'Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact';
+my $class = 'Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact';
 
 # Everything after the service string advice, so each test can vary only the
 # UNA. Built inline in the same style as t/Message.t.
@@ -47,7 +47,7 @@ sub _message_count {
 subtest 'service_string_advice accepts both syntax versions' => sub {
     plan tests => 4;
 
-    my $ssa = \&Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::service_string_advice;
+    my $ssa = \&Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::service_string_advice;
 
     ok( $ssa->(q{:+.? '}), 'syntax version 3 defaults, reserved space in position five' );
 
