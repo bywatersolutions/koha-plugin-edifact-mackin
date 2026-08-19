@@ -19,7 +19,7 @@ use Modern::Perl;
 
 use Test::More tests => 9;
 
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact;
 
 # A small INVOIC interchange with two LINs and several MOAs at the
 # message-summary level. Built inline so the test is self-contained
@@ -51,7 +51,7 @@ my $invoic = join q{},
     q{'UNT+19+00001},
     q{'UNZ+1+0000000001'};
 
-my $edi = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact->new(
+my $edi = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact->new(
     { transmission => $invoic } );
 my ($msg) = @{ $edi->message_array };
 
@@ -82,11 +82,11 @@ my $charges = join q{},
     q{'UNT+19+3755},
     q{'UNZ+1+662215'};
 
-my $charge_edi = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact->new(
+my $charge_edi = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact->new(
     { transmission => $charges } );
 my ($charge_msg) = @{ $charge_edi->message_array };
 isa_ok( $msg,
-    'Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Message',
+    'Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Message',
     'message_array returned a Message object' );
 
 subtest 'header / BGM / DTM accessors' => sub {
@@ -142,12 +142,12 @@ subtest 'shipment_charge sums per plugin shipment_charges_moa_* settings' => sub
     my $stub_plugin = sub {
         my %settings = @_;
         bless { _settings => \%settings },
-            'Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::TestStub';
+            'Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::TestStub';
     };
 
     {
         no strict 'refs';
-        *{'Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::TestStub::retrieve_data'}
+        *{'Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::TestStub::retrieve_data'}
             = sub { $_[0]->{_settings}->{ $_[1] } };
     }
 
@@ -347,7 +347,7 @@ subtest 'line-level context, pseudo-fields and defensive matching' => sub {
         q{'UNT+16+00001},
         q{'UNZ+1+0000000001'};
 
-    my $line_edi = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact->new(
+    my $line_edi = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact->new(
         { transmission => $lines } );
     my ($line_msg) = @{ $line_edi->message_array };
     my $moa = $line_msg->moa_amounts;
@@ -400,7 +400,7 @@ subtest 'line-level context, pseudo-fields and defensive matching' => sub {
         q{'UNT+5+00002},
         q{'UNZ+1+0000000002'};
     my ($quote_msg) = @{
-        Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact->new(
+        Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact->new(
             { transmission => $quote } )->message_array
     };
     is_deeply( $quote_msg->moa_amounts, [], 'moa_amounts is empty for a non-invoice' );
