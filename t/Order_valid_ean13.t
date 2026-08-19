@@ -24,10 +24,10 @@ BEGIN {
     # Loading Order pulls in half of Koha, and Koha::Cache warns at load time
     # when memcached isn't reachable. That noise is not this test's business.
     local $SIG{__WARN__} = sub { };
-    require Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Order;
+    require Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Order;
 }
 
-my $valid = \&Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Order::_valid_ean13;
+my $valid = \&Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Order::_valid_ean13;
 
 subtest '_valid_ean13 replaces Business::Barcode::EAN13::valid_barcode' => sub {
     plan tests => 12;

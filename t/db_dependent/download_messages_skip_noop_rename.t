@@ -24,8 +24,8 @@ use Test::More tests => 2;
 use t::lib::TestBuilder;
 
 use Koha::Database;
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced;
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Transport;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Transport;
 
 my $schema  = Koha::Database->new->schema;
 my $builder = t::lib::TestBuilder->new;
@@ -69,7 +69,7 @@ my $builder = t::lib::TestBuilder->new;
 
 sub _new_plugin {
     my (%settings) = @_;
-    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced->new(
+    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin->new(
         { enable_plugins => 1, cgi => CGI->new } );
     $plugin->store_data( \%settings ) if %settings;
     return $plugin;
@@ -88,13 +88,13 @@ sub _new_transport {
             value  => {
                 vendor_id         => $vendor->id,
                 file_transport_id => undef,
-                plugin => 'Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced',
+                plugin => 'Koha::Plugin::Com::ByWaterSolutions::EdifactMackin',
             },
         }
     );
 
     my $transport =
-        Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Transport
+        Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Transport
         ->new( $edi_account->{id}, $plugin );
 
     my $mock = t::MockFileTransport->new(

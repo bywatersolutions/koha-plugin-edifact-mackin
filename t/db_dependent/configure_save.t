@@ -21,7 +21,7 @@ use CGI;
 use Test::More tests => 1;
 
 use Koha::Database;
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin;
 
 my $schema = Koha::Database->new->schema;
 
@@ -36,7 +36,7 @@ subtest 'a missing parameter must not shift the settings that follow it' => sub 
     # no_update_item_price on purpose.
     my $cgi = CGI->new(
         'save=1&set_nfl_on_receipt=7&pia_limit=10&invoice_adjustment_rules=[]');
-    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced->new(
+    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin->new(
         { enable_plugins => 1, cgi => $cgi } );
 
     {
