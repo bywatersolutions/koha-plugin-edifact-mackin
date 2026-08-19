@@ -23,8 +23,8 @@ use Test::More tests => 5;
 use t::lib::TestBuilder;
 
 use Koha::Database;
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced;
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Order;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Order;
 
 my $schema  = Koha::Database->new->schema;
 my $builder = t::lib::TestBuilder->new;
@@ -45,7 +45,7 @@ my %BASE_SETTINGS = (
 
 sub _new_plugin {
     my (%settings) = @_;
-    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced->new(
+    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin->new(
         { enable_plugins => 1, cgi => CGI->new } );
     $plugin->store_data( { %BASE_SETTINGS, %settings } );
     return $plugin;
@@ -62,7 +62,7 @@ sub _build_header_fixture {
             value  => {
                 san               => '1234567',
                 id_code_qualifier => '31B',
-                plugin            => 'Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced',
+                plugin            => 'Koha::Plugin::Com::ByWaterSolutions::EdifactMackin',
             },
         }
     );
@@ -104,7 +104,7 @@ sub _build_header_fixture {
 sub _header_segs {
     my ( $plugin, $vendor, $sender, $orderline ) = @_;
 
-    my $edi_order = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Order->new(
+    my $edi_order = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Order->new(
         {
             orderlines => [$orderline],
             vendor     => $vendor,
