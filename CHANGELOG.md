@@ -314,7 +314,7 @@ First release of the modern transport rewrite.
 
 Foundational development series. The plugin began as a customization of the
 Ingram EDI plugin (briefly named `EdifactIngram`) and was generalized into
-`EdifactEnhanced`. Highlights of what was built up over this series:
+`EdifactMackin`. Highlights of what was built up over this series:
 
 ### Added
 
@@ -346,28 +346,28 @@ Ingram EDI plugin (briefly named `EdifactIngram`) and was generalized into
 - Numerous fixes for Koha API changes and EDIFACT encoding/escaping over the
   life of the series.
 
-[Unreleased]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v4.3.3...HEAD
-[4.3.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v4.2.6...v4.3.3
-[4.2.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v4.1.1...v4.2.6
-[4.1.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v4.0.26...v4.1.1
-[4.0.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v3.9.29...v4.0.26
-[3.9.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v3.8.25...v3.9.29
-[3.8.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v3.7.0...v3.8.25
-[3.6.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v3.5.2...v3.6.9
-[3.5.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v3.4.1...v3.5.2
-[3.4.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v3.2.0...v3.4.1
-[3.2.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v3.1.0...v3.2.0
-[3.1.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v3.0.12...v3.1.0
-[3.0.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.12.1...v3.0.12
-[2.12.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.11.2...v2.12.1
-[2.11.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.10.0...v2.11.2
-[2.10.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.9.0...v2.10.0
-[2.9.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.8.2...v2.9.0
-[2.8.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.7.0...v2.8.2
-[2.7.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.6.5...v2.7.0
-[2.6.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.5.4...v2.6.5
-[2.5.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.4.0...v2.5.4
-[2.4.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.3.4...v2.4.0
-[2.3.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.2.13...v2.3.4
-[2.2.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/compare/v2.1.74...v2.2.13
-[2.1.x]: https://github.com/bywatersolutions/koha-plugin-edifact-enhanced/releases/tag/v2.1.74
+[Unreleased]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v4.3.3...HEAD
+[4.3.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v4.2.6...v4.3.3
+[4.2.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v4.1.1...v4.2.6
+[4.1.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v4.0.26...v4.1.1
+[4.0.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v3.9.29...v4.0.26
+[3.9.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v3.8.25...v3.9.29
+[3.8.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v3.7.0...v3.8.25
+[3.6.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v3.5.2...v3.6.9
+[3.5.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v3.4.1...v3.5.2
+[3.4.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v3.2.0...v3.4.1
+[3.2.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v3.1.0...v3.2.0
+[3.1.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v3.0.12...v3.1.0
+[3.0.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.12.1...v3.0.12
+[2.12.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.11.2...v2.12.1
+[2.11.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.10.0...v2.11.2
+[2.10.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.9.0...v2.10.0
+[2.9.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.8.2...v2.9.0
+[2.8.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.7.0...v2.8.2
+[2.7.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.6.5...v2.7.0
+[2.6.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.5.4...v2.6.5
+[2.5.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.4.0...v2.5.4
+[2.4.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.3.4...v2.4.0
+[2.3.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.2.13...v2.3.4
+[2.2.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/compare/v2.1.74...v2.2.13
+[2.1.x]: https://github.com/bywatersolutions/koha-plugin-edifact-mackin/releases/tag/v2.1.74

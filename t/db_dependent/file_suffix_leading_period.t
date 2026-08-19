@@ -25,9 +25,9 @@ use Test::More tests => 3;
 use t::lib::TestBuilder;
 
 use Koha::Database;
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced;
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Order;
-use Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Transport;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Order;
+use Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Transport;
 
 my $schema  = Koha::Database->new->schema;
 my $builder = t::lib::TestBuilder->new;
@@ -83,7 +83,7 @@ my $builder = t::lib::TestBuilder->new;
 
 sub _new_plugin {
     my (%settings) = @_;
-    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced->new(
+    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin->new(
         { enable_plugins => 1, cgi => CGI->new } );
     $plugin->store_data( \%settings ) if %settings;
     return $plugin;
@@ -105,13 +105,13 @@ subtest 'invoice_file_suffix with a leading period still matches files' => sub {
             value  => {
                 vendor_id         => $vendor->id,
                 file_transport_id => undef,
-                plugin => 'Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced',
+                plugin => 'Koha::Plugin::Com::ByWaterSolutions::EdifactMackin',
             },
         }
     );
 
     my $transport =
-        Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Transport
+        Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Transport
         ->new( $edi_account->{id}, $plugin );
 
     is( $transport->_get_file_ext('INVOICE'), 'CEI',
@@ -147,7 +147,7 @@ subtest 'order_file_suffix with a leading period does not double the dot' => sub
     # vendor/ean only need to be truthy for the constructor; filename() does
     # not use them.
     my $edi_order =
-        Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced::Edifact::Order->new(
+        Koha::Plugin::Com::ByWaterSolutions::EdifactMackin::Edifact::Order->new(
         {
             orderlines => [$orderline],
             vendor     => 'vendor',
@@ -172,7 +172,7 @@ subtest 'configure save strips a leading period before storing' => sub {
     my $base_mock = Test::MockModule->new('Koha::Plugins::Base');
     $base_mock->mock( go_home => sub { return; } );
 
-    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactEnhanced->new(
+    my $plugin = Koha::Plugin::Com::ByWaterSolutions::EdifactMackin->new(
         {
             enable_plugins => 1,
             cgi            => CGI->new(
