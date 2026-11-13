@@ -400,14 +400,12 @@ sub edifact_process_invoice {
 # Koha::EDI::transfer_items() uses the GIR branch information from the
 # invoice line to move the correct number of item links, by homebranch,
 # from the outstanding order to the newly created completed order.
-# _add_missing_gir_branches() fills that in for vendors that send none.
 #
 # This must happen before _receipt_items(), because _receipt_items()
 # looks up items by the received ordernumber. Without the transfer, the
 # completed partial order has no linked items and receipt-time item
 # updates such as dateaccessioned and notforloan are never applied.
 
-                        _add_missing_gir_branches( $self, $line, $order, $quantity );
                         Koha::EDI::transfer_items( $schema, $line, $order, $received_order, $quantity );
 
                         _receipt_items( $self, $schema, $line, $received_order->ordernumber );
