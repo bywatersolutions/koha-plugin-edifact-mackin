@@ -504,6 +504,23 @@ sub edifact_process_invoice {
     return;
 }
 
+sub _add_missing_gir_branches {
+    my ( $self, $inv_line, $order, $quantity ) = @_;
+
+    # Koha::EDI::transfer_items only moves items whose homebranch matches a GIR branch on the invoice line,
+    # vendors such as Brodart send no GIR segments on invoices so use the homebranches of items still on the order
+    my @homebranches = map { $_->homebranch } Koha::Acquisition::Orders->find( $order->ordernumber )->items->search( {}, { order_by => 'itemnumber', rows => $quantity } )->as_list;
+
+    for my $occurrence ( 0 .. $#homebranches ) {
+        next if defined $inv_line->girfield( 'branch', $occurrence );
+
+        # Koha::Edifact::Line has no setter for GIR data, t/db_dependent/add_missing_gir_branches.t fails if it stops storing it like this
+        $inv_line->{GIR}->[$occurrence]->{branch} = $homebranches[$occurrence];
+    }
+
+    return;
+}
+
 sub _receipt_items {
     my ( $self, $schema, $inv_line, $ordernumber ) = @_;
     my $logger   = Log::Log4perl->get_logger();
